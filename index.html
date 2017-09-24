@@ -6,5 +6,21 @@
   </head>
   <body>
     <button>Загрузить еще</button>
+    <div>
+      <script type="text/javascript">
+        var feed = new instFeed({
+          get: 'user',
+          limit: 20,
+          userId: 2203262219,
+          accessToken: "2203262219.2bbe5a35d73e41109efda72705436bfc",
+          resolution: 'standard_resolution',
+          filter: function(image) {
+            return image.tags.indexOf('somehashtag') >= 0;
+          }
+        });
+        feed.run();
+      </script>
+      <div id='instFeed'></div>
+    </div>
   </body>
 </html>
