@@ -1,0 +1,23 @@
+body{
+	margin: 0;
+	background-color: #FBFBFB;
+}
+ul{
+	list-style: none; 
+  
+}
+li{
+	margin: 0px;
+}
+#feed{
+  margin: 35px 300px;
+  background-color: #E0EFFA;
+}
+div .go{
+  padding-left: 35px;
+  vertical-align: top;
+  display: inline-block;
+  width: 190px;
+  height: auto;
+  background-color: #FBFBFB;
+}

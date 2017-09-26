@@ -16,7 +16,7 @@ $(document).ready(function(){
           var text = result.data[i].caption.text;
           var countLikes = result.data[i].likes.count; 
           var photoDate = new Date( result.data[i].created_time*1000);
-          $('ul').append('<li><img src="'+photo+'"><br>'+text+'<p>'+countLikes+'</p><h4>'+photoDate.toLocaleString()+'</h4></li>'); 
+          $('ul').append('<li><img src="'+photo+'"><div class="go"><br>'+text+'<p>'+countLikes+'</p><h4>'+photoDate.toLocaleString()+'</h4></div></li>'); 
         }
       },
       error: function(result){
