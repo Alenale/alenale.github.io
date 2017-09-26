@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="getPhoto.js"></script>
     <title>Photo</title>
   </head>
   <body>
-    <button>Загрузить еще</button>
+    <button id="more">Загрузить еще</button>
     <div>
-      <script type="text/javascript">
-        var feed = new instFeed({
-          get: 'user',
-          limit: 20,
-          userId: 2203262219,
-          accessToken: "2203262219.2bbe5a35d73e41109efda72705436bfc",
-          resolution: 'standard_resolution',
-          filter: function(image) {
-            return image.tags.indexOf('somehashtag') >= 0;
-          }
-        });
-        feed.run();
-      </script>
-      <div id='instFeed'></div>
+      <ul id="rudr_instafeed"></ul>
     </div>
   </body>
 </html>
