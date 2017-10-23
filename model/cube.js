@@ -18,21 +18,49 @@
 		scene_setup();
 
 		//Add your code here!
+/*
 		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
 		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00} );//We make it green
 		var cube = new THREE.Mesh( geometry, material );
 		//Add it to the screen
 		scene.add( cube );
 		cube.position.z = -3;//Shift the cube back so we can see it
-		
+*/
     //Load the GLSL code from the HTML as a string
     var shaderCode = document.getElementById("fragShader").innerHTML; 
 
     //Load an image
-    THREE.ImageUtils.crossOrigin = '';//Allows us to load an external image
-var tex = THREE.ImageUtils.loadTexture( "https://alenale.github.io/pic/fluffy_clouds.png" );
+    //THREE.ImageUtils.crossOrigin = '';//Allows us to load an external image
+//var tex = THREE.ImageUtils.loadTexture( "https://alenale.github.io/pic/fluffy_clouds.png" );
+var path = "https://alenale.github.io/pic/";
+
+        var urls = [ path + "fluffy_clouds.png", path + "fluffy_clouds.png",
+                     path + "fluffy_clouds.png", path + "fluffy_clouds.png",
+                     path + "fluffy_clouds.png", path + "fluffy_clouds.png" ];
+var envMap = THREE.ImageUtils.loadTextureCube( urls );
+materials["phong-envmapped"] = new THREE.MeshBasicMaterial(
+           { color: 0xffffff,
+             envMap : envMap,
+             reflectivity:1.3} );
+ 
+	// Create the skybox
+        var shader = THREE.ShaderLib[ "cube" ];
+        shader.uniforms[ "tCube" ].value = envMap;
+
+        var material = new THREE.ShaderMaterial( {
+
+            fragmentShader: shader.shaderCode,
+            vertexShader: shader.vertexShader,
+            uniforms: shader.uniforms,
+            side: THREE.BackSide
+
+        } ),
+
+        mesh = new THREE.Mesh( new THREE.CubeGeometry( 500, 500, 500 ), material );
+        scene.add( mesh );
 
     //Our data to be sent to the shader
+/*
     var uniforms = {};
     uniforms.resolution = {type:'v2',value:new THREE.Vector2(window.innerWidth,window.innerHeight)};
     uniforms.texture = {type:'t',value:tex};
@@ -56,3 +84,4 @@ var tex = THREE.ImageUtils.loadTexture( "https://alenale.github.io/pic/fluffy_cl
 	renderer.render( scene, camera );
 }
 		render();
+*/
