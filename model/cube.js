@@ -42,13 +42,18 @@ materials["phong-envmapped"] = new THREE.MeshBasicMaterial(
            { color: 0xffffff,
              envMap : envMap,
              reflectivity:1.3} );
- 
-	// Create the skybox
-        var shader = THREE.ShaderLib[ "cube" ];
-        shader.uniforms[ "tCube" ].value = envMap;
 
-        var material = new THREE.ShaderMaterial( {
+    //Our data to be sent to the shader
 
+    var uniforms = {};
+    uniforms.resolution = {type:'v3',value:new THREE.Vector3(window.innerWidth,window.innerHeight)};
+    uniforms.texture = {type:'t',value:envMap};
+// Create the skybox
+    var shader = THREE.ShaderLib[ "cube" ];
+    shader.uniforms[ "tCube" ].value = envMap;
+
+     var material = new THREE.ShaderMaterial( { 
+	     
             fragmentShader: shader.shaderCode,
             vertexShader: shader.vertexShader,
             uniforms: shader.uniforms,
@@ -58,13 +63,7 @@ materials["phong-envmapped"] = new THREE.MeshBasicMaterial(
 
         mesh = new THREE.Mesh( new THREE.CubeGeometry( 500, 500, 500 ), material );
         scene.add( mesh );
-
-    //Our data to be sent to the shader
 /*
-    var uniforms = {};
-    uniforms.resolution = {type:'v2',value:new THREE.Vector2(window.innerWidth,window.innerHeight)};
-    uniforms.texture = {type:'t',value:tex};
-
     
 
     //Create an object to apply the shaders to
