@@ -1,6 +1,3 @@
-//@author Omar Shehata. 2015.
-		//We are loading the Three.js library from the cdn here: https://cdnjs.com/libraries/three.js/
-
 		var scene;
 		var camera;
 		var renderer;
