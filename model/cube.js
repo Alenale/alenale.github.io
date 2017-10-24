@@ -21,9 +21,6 @@ function init() {
     
 	// Create the sky box
 	loadSkyBox();
-	
-    // Add scene elements
-    addSceneElements();
     
 	// Create the WebGL Renderer
 	renderer = new THREE.WebGLRenderer( { antialias:true} );
