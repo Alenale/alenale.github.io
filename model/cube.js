@@ -3,8 +3,6 @@ var scene;
 var renderer;
 var controls;
 
-init();
-animate();
 
 function init() {
     
@@ -43,6 +41,8 @@ function init() {
 	// Set the point at which we will orbit around
     controls.target = new THREE.Vector3(0, 0, 0);     
 }
+
+init();
 
 function loadSkyBox() {
 	
@@ -85,6 +85,8 @@ function animate() {
     requestAnimationFrame( animate );
     
 }
+animate();
+
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
