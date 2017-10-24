@@ -1,21 +1,18 @@
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>
-		Ocean
-	 </title>
-	 
+ 	<title>Ocean</title>
+ 	<script src="three.js"></script>
+ 	<script src="cube.js"></script>
  </head>
- 	<body>
-		<script id="fragShader" type="shader-code">
-		 uniform vec2 resolution;
+ <body>
+	 <script id="fragShader" type="shader-code">
+	 	uniform vec2 resolution;
 		uniform sampler2D texture;
 		void main() {
-			vec2 pos = gl_FragCoord.xy / resolution.xy;
-		    gl_FragColor = texture2D(texture,pos);
+			vec2 pos = gl_FragCoord.xy/resolution.xy;
+	    	gl_FragColor = texture2D(texture,pos);
 		}
-		</script>
-		<script src="three.js"></script>
-		<script src="cube.js"></script>		
-	</body>
-</html>
+	</script>
+ </body>
+ </html>
