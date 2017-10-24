@@ -6,13 +6,5 @@
  	<script src="cube.js"></script>
  </head>
  <body>
-	 <script id="fragShader" type="shader-code">
-	 	uniform vec2 resolution;
-		uniform sampler2D texture;
-		void main() {
-			vec2 pos = gl_FragCoord.xy/resolution.xy;
-	    	gl_FragColor = texture2D(texture,pos);
-		}
-	</script>
  </body>
  </html>
