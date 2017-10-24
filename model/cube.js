@@ -1,84 +1,92 @@
-	var scene;
 	var camera;
-	var renderer;
+var scene;
+var renderer;
+var controls;
 
-	function scene_setup(){
-		//This is all code needed to set up a basic ThreeJS scene
-		//First we initialize the scene and our camera
-		scene = new THREE.Scene();
-		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-		//We create the WebGL renderer and add it to the document
-		renderer = new THREE.WebGLRenderer();
-		renderer.setSize( window.innerWidth, window.innerHeight );
-		document.body.appendChild( renderer.domElement );
-	}
+init();
+animate();
 
-	scene_setup();
-
-	//Add your code here!
-/*
-		var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-		var material = new THREE.MeshBasicMaterial( { color: 0x00ff00} );//We make it green
-		var cube = new THREE.Mesh( geometry, material );
-		//Add it to the screen
-		scene.add( cube );
-		cube.position.z = -3;//Shift the cube back so we can see it
-*/
-    //Load the GLSL code from the HTML as a string
-	var shaderCode = document.getElementById("fragShader").innerHTML; 
-
-    //Load an image
-    //THREE.ImageUtils.crossOrigin = '';//Allows us to load an external image
-//var tex = THREE.ImageUtils.loadTexture( "https://alenale.github.io/pic/fluffy_clouds.png" );
-	var path = "https://alenale.github.io/pic/";
-
-	var urls = [ path + "fluffy_clouds_px.png", path + "fluffy_clouds_nx.png",
-                     path + "fluffy_clouds_py.png", path + "seabed_ny.png",
-                     path + "fluffy_clouds_pz.png", path + "fluffy_clouds_nz.png" ];
-	var envMap = THREE.ImageUtils.loadTextureCube( urls );
-	materials["phong-envmapped"] = new THREE.MeshBasicMaterial(
-           { color: 0xffffff,
-             envMap : envMap,
-             reflectivity:1.3} );
-
-    //Our data to be sent to the shader
-
-    /*
-    var uniforms = {};
-    uniforms.resolution = {type:'v3',value:new THREE.Vector3(window.innerWidth,window.innerHeight)};
-    uniforms.texture = {type:'t',value:envMap};
-    */
-	// Create the skybox
-	var uniforms = {};
-    var shader = THREE.ShaderLib[ "cube" ];
-    shader.uniforms[ "tCube" ].value = envMap;
-
-     var material = new THREE.ShaderMaterial( { 
-	     
-            fragmentShader: shader.shaderCode,
-            vertexShader: shader.vertexShader,
-            uniforms: shader.uniforms,
-            side: THREE.BackSide
-
-        } ),
-
-        mesh = new THREE.Mesh( new THREE.CubeGeometry( 500, 500, 500 ), material );
-        scene.add( mesh );
-/*
+function init() {
     
-    //Create an object to apply the shaders to
-    var material = new THREE.ShaderMaterial({uniforms:uniforms,fragmentShader:shaderCode})
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var sprite = new THREE.Mesh( geometry,material );
-    scene.add( sprite );
-    sprite.position.z = -2;//Move it back so we can see it
-		//Render everything!
-		function render() {
-	  sprite.rotation.y += 0.02;
-    uniforms.resolution.value.x = window.innerWidth;
-    uniforms.resolution.value.y = window.innerHeight;
-	requestAnimationFrame( render );
-	renderer.render( scene, camera );
+	// Create a scene
+    scene = new THREE.Scene();
+    
+	// Add the camera
+    camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(-0, 10, 30);
+
+    // Add a light
+	var light = new THREE.DirectionalLight(0xaaaae5, 2);
+	light.position.set(15, 16, -50);
+    scene.add(light);
+	//scene.add(new THREE.PointLightHelper(light, 3));
+    
+	// Create the sky box
+	loadSkyBox();
+	
+    // Add scene elements
+    addSceneElements();
+    
+	// Create the WebGL Renderer
+	renderer = new THREE.WebGLRenderer( { antialias:true} );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    
+    // Append the renderer to the body
+    document.body.appendChild( renderer.domElement );
+
+    // Add a resize event listener
+    window.addEventListener( 'resize', onWindowResize, false );
+    
+    // Add the orbit controls to the camera
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+	
+	// Set the point at which we will orbit around
+    controls.target = new THREE.Vector3(0, 0, 0);     
 }
-		render();
-*/
+
+function loadSkyBox() {
+	
+		// Load the skybox images and create list of materials
+		var materials = [
+			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_px.png' ), // right
+			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_nx.png' ), // left
+			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_py.png' ), // top
+			createMaterial( 'https://alenale.github.io/pic/seabed_ny.png' ), // bottom
+			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_pz.png' ), // back
+			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_nz.png' )  // front
+		];
+		
+		// Create a large cube
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		
+		// Set the x scale to be -1, this will turn the cube inside out
+		mesh.scale.set(-1,1,1);
+		scene.add( mesh );	
+}
+
+function createMaterial( path ) {
+	var texture = THREE.ImageUtils.loadTexture(path);
+	var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
+
+	return material; 
+}
+
+function animate() {
+	
+	// Update the orbit controls
+	if(controls != null) {
+		controls.update();
+	}
+	
+	// Render the scene
+	renderer.render( scene, camera );
+	
+	// Repeat
+    requestAnimationFrame( animate );
+    
+}
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+}
