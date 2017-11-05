@@ -80,7 +80,7 @@
     cubeMesh.position.set(0, -D / 2, 0);
     scene.add(mesh);
     scene.add(cubeMesh);
-    controls = new THREE.TrackballControls(camera);
+    //controls = new THREE.TrackballControls(camera);
     projector = new THREE.Projector();
     renderer = new THREE.WebGLRenderer();
     updateViewport = function() {
