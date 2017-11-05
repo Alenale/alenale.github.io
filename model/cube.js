@@ -69,10 +69,10 @@ function createMaterial( path ) {
 }
 
 function addSceneElements() {
-	var geometry = new THREE.BoxGeometry( 400, 200, 400 );
-	var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.4 } );
+	var geometry = new THREE.BoxGeometry( 800, 200, 800 );
+	var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
 	var wave = new THREE.Mesh( geometry, material );
-	wave.position.set(0, -200, 0);
+	wave.position.set(0, -300, 0);
 	scene.add( wave );
 }
 
