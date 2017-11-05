@@ -54,7 +54,7 @@ function loadSkyBox() {
 		];
 		
 		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 500, 500, 500, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 800, 800, 800, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
 		
 		// Set the x scale to be -1, this will turn the cube inside out
 		mesh.scale.set(-1,1,1);
@@ -72,6 +72,7 @@ function addSceneElements() {
 	var geometry = new THREE.BoxGeometry( 400, 200, 400 );
 	var material = new THREE.MeshPhongMaterial( {color: 0x13B2D6} );
 	var wave = new THREE.Mesh( geometry, material );
+	wave.position.set(0, -200, 0)
 	scene.add( wave );
 }
 
