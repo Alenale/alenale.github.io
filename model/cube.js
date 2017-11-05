@@ -70,9 +70,9 @@ function createMaterial( path ) {
 
 function addSceneElements() {
 	var geometry = new THREE.BoxGeometry( 400, 200, 400 );
-	var material = new THREE.MeshPhongMaterial( {color: 0x13B2D6} );
+	var material = new THREE.MeshPhongMaterial( { color: 0x384E74, transparent: true } );
 	var wave = new THREE.Mesh( geometry, material );
-	wave.position.set(0, -200, 0)
+	wave.position.set(0, -200, 0);
 	scene.add( wave );
 }
 
