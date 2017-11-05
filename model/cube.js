@@ -3,6 +3,8 @@ var scene;
 var renderer;
 var controls;
 
+init();
+animate();
 
 function init() {
     
@@ -21,6 +23,9 @@ function init() {
     
 	// Create the sky box
 	loadSkyBox();
+	
+    // Add scene elements
+    addSceneElements();
     
 	// Create the WebGL Renderer
 	renderer = new THREE.WebGLRenderer( { antialias:true} );
@@ -39,18 +44,16 @@ function init() {
     controls.target = new THREE.Vector3(0, 0, 0);     
 }
 
-init();
-
 function loadSkyBox() {
 	
 		// Load the skybox images and create list of materials
 		var materials = [
-			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_px.png' ), // right
-			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_nx.png' ), // left
-			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_py.png' ), // top
+			createMaterial( 'https://alenale.github.io/pic/skyX55+x.png' ), // right
+			createMaterial( 'https://alenale.github.io/pic/skyX55-x.png' ), // left
+			createMaterial( 'https://alenale.github.io/pic/skyX55+y.png' ), // top
 			createMaterial( 'https://alenale.github.io/pic/seabed_ny.png' ), // bottom
-			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_pz.png' ), // back
-			createMaterial( 'https://alenale.github.io/pic/fluffy_clouds_nz.png' )  // front
+			createMaterial( 'https://alenale.github.io/pic/skyX55+z.png' ), // back
+			createMaterial( 'https://alenale.github.io/pic/skyX55-z.png' )  // front
 		];
 		
 		// Create a large cube
@@ -82,8 +85,6 @@ function animate() {
     requestAnimationFrame( animate );
     
 }
-animate();
-
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
