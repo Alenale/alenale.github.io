@@ -67,6 +67,13 @@ function createMaterial( path ) {
 	return material; 
 }
 
+function addSceneElements() {
+	var geometry = new THREE.BoxGeometry( 400, 200, 400 );
+	var material = new THREE.MeshPhongMaterial( {color: 0x13B2D6} );
+	var wave = new THREE.Mesh( geometry, material );
+	scene.add( wave );
+}
+
 function animate() {
 	
 	// Update the orbit controls
