@@ -139,9 +139,9 @@ function animate(ts) {
     for (var i = 0; i < vLength; i++) {
     	var v = mesh.geometry.vertices[i];
     	var dist = new THREE.Vector2(v.x, v.y).sub(center);
-    	var size = 2.0;
-    	var magnitude = 4;
-    	v.z = Math.sin(dist.length()/-size + (ts/900)) * magnitude;
+    	var size = 4.0;
+    	var magnitude = 8;
+    	v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
   	}
   	mesh.geometry.verticesNeedUpdate = true;
   	renderer.render(scene, camera);
