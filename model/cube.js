@@ -57,7 +57,7 @@ function loadSkyBox() {
 		];
 		
 		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 800, 800, 800, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 1100, 1100, 1100, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
 		
 		// Set the x scale to be -1, this will turn the cube inside out
 		mesh.scale.set(-1,1,1);
@@ -85,7 +85,8 @@ function moveWaves(){
 }
 */
 
-var geometry = new THREE.BoxGeometry( 800, 200, 800 );
+/*
+var geometry = new THREE.BoxGeometry( 1100, 200, 1100 );
 //var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
 var material = new THREE.MeshPhongMaterial({
 	color: 0x03436A,
@@ -105,7 +106,16 @@ mesh.rotation.x = -0.4 * Math.PI;
 mesh.position.set(0, -300, 0);
 
 scene.add( mesh );
+*/
+var planeGeometry = new THREE.PlaneGeometry(800, 100, 100, 100);
+var planeMaterial = new THREE.MeshBasicMaterial({color: 0x45BEBF, transparent: true, opacity: 0.6 });
+var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
+mesh.rotation.x = -0.4 * Math.PI;
+
+mesh.position.set(0, -500, 0);
+
+scene.add(mesh);
 
 
 function animate(ts) {
@@ -122,13 +132,13 @@ function animate(ts) {
     requestAnimationFrame( animate );
     
     // Animate waves    
-    var center = new THREE.Vector3(0,0,0);
+    var center = new THREE.Vector2(0,0);
     //window.requestAnimationFrame(animate);
     var vLength = mesh.geometry.vertices.length;
 
     for (var i = 0; i < vLength; i++) {
     	var v = mesh.geometry.vertices[i];
-    	var dist = new THREE.Vector3(v.x, v.y, v.z).sub(center);
+    	var dist = new THREE.Vector2(v.x, v.y).sub(center);
     	var size = 2.0;
     	var magnitude = 4;
     	v.z = Math.sin(dist.length()/-size + (ts/900)) * magnitude;
