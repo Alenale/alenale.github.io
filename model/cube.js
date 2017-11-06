@@ -44,7 +44,7 @@ init();
 
 
 
-var geometry = new THREE.BoxGeometry( 800, 200, 800 );
+var geom = new THREE.BoxGeometry( 800, 200, 800 );
 	//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
 	var material = new THREE.MeshPhongMaterial({
         color: 0x03436A,
@@ -54,14 +54,14 @@ var geometry = new THREE.BoxGeometry( 800, 200, 800 );
     });
 
 	// Create Array of vertices
-	geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
-	geometry.mergeVertices();
+	geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+	geom.mergeVertices();
 
 	var l = geometry.vertices.length;
 	this.waves = [];
 
 	for (var i=0; i<l; i++){
-        var v = geometry.vertices[i];
+        var v = geom.vertices[i];
 
         this.waves.push({
             y:v.y,
@@ -76,9 +76,8 @@ var geometry = new THREE.BoxGeometry( 800, 200, 800 );
         });
     };
 
-    mesh = new THREE.Mesh( geometry, material );
+    mesh = new THREE.Mesh( geom, material );
 	mesh.position.set(0, -300, 0);
-
 
 	scene.add( mesh );
 
