@@ -61,7 +61,7 @@ var geometry = new THREE.BoxGeometry( 800, 200, 800 );
 	this.waves = [];
 
 	for (var i=0; i<l; i++){
-        var v = geom.vertices[i];
+        var v = geometry.vertices[i];
 
         this.waves.push({
             y:v.y,
