@@ -107,8 +107,8 @@ mesh.position.set(0, -300, 0);
 
 scene.add( mesh );
 */
-var planeGeometry = new THREE.PlaneGeometry(800, 100, 100, 100);
-var planeMaterial = new THREE.MeshBasicMaterial({color: 0x45BEBF, transparent: true, opacity: 0.6 });
+var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 1100, 100);
+var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, transparent: true, opacity: 0.6, shading: THREE.FlatShading });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 mesh.rotation.x = -0.4 * Math.PI;
