@@ -76,11 +76,11 @@ var geometry = new THREE.BoxGeometry( 800, 200, 800 );
         });
     };
 
-    var wave = new THREE.Mesh( geometry, material );
-	wave.position.set(0, -300, 0);
+    mesh = new THREE.Mesh( geometry, material );
+	mesh.position.set(0, -300, 0);
 
 
-	scene.add( wave );
+	scene.add( mesh );
 
 
 
@@ -114,7 +114,7 @@ function createMaterial( path ) {
 function createSea() {
 	
 	// Get vertices
-    var verts = wave.geometry.vertices;
+    var verts = mesh.geometry.vertices;
     var l = verts.length;
     
     for (var i=0; i<l; i++){
