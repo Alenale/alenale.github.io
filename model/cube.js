@@ -3,6 +3,21 @@ var scene;
 var renderer;
 var controls;
 
+var geometry, points = [];
+
+var SEPARATION     = 25;
+var AMOUNTX        = 50;
+var AMOUNTY        = 50;
+var INITIAL_FACTOR = 1.0;
+var WAVE_HEIGHT    = 200;
+var WAVE_SPEED     = 0.2;
+var ROTATION_SPEED = 0.1;
+var DAMP_SPEED     = 0.005;
+var CAMERA_SPEED   = 0.05;
+ 
+var rotation = 0;
+var factor   = INITIAL_FACTOR;
+
 function init() {
     
 	// Create a scene
@@ -42,47 +57,6 @@ function init() {
 }
 init();
 
-
-
-var geom = new THREE.BoxGeometry( 800, 200, 800 );
-	//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
-	var material = new THREE.MeshPhongMaterial({
-        color: 0x03436A,
-        transparent: true,
-        opacity: 0.6,
-        shading: THREE.FlatShading,
-    });
-
-	// Create Array of vertices
-	geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
-	geom.mergeVertices();
-
-	var l = geometry.vertices.length;
-	this.waves = [];
-
-	for (var i=0; i<l; i++){
-        var v = geom.vertices[i];
-
-        this.waves.push({
-            y:v.y,
-            x:v.x,
-            z:v.z,
-            // Random angle
-            ang:Math.random()*Math.PI*2,
-            // Random distance
-            amp:5 + Math.random()*15,
-            // Random speed between 0,016 0,048 
-            speed:0.016 + Math.random()*0.032
-        });
-    };
-
-    mesh = new THREE.Mesh( geom, material );
-	mesh.position.set(0, -300, 0);
-
-	scene.add( mesh );
-
-
-
 function loadSkyBox() {
 	
 		// Load the skybox images and create list of materials
@@ -111,28 +85,56 @@ function createMaterial( path ) {
 }
 
 function createSea() {
-	
-	// Get vertices
-    var verts = geometry.vertices;
-    var l = verts.length;
-    
-    for (var i=0; i<l; i++){
-        var v = verts[i];
-        
-        // get data
-        var vprops = waves[i];
-        
-        // update vertices position
-        v.x = vprops.x + Math.cos(vprops.ang)*vprops.amp;
-        v.y = vprops.y + Math.sin(vprops.ang)*vprops.amp;
 
-        // increase angle
-        vprops.ang += vprops.speed;
+	var geometry = new THREE.BoxGeometry( 800, 200, 800 );
+	//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
+	var material = new THREE.MeshPhongMaterial({
+        color: 0x03436A,
+        transparent: true,
+        opacity: 0.6,
+        shading: THREE.FlatShading,
+    });
 
-    }
+	// Create Array of vertices
+	geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+	geometry.mergeVertices();
 
+	var l = geometry.vertices.length;
+	this.waves = [];
+
+	for (var i=0; i<l; i++){
+        var v = geometry.vertices[i];
+
+        this.waves.push({
+            y:v.y,
+            x:v.x,
+            z:v.z,
+            // Random angle
+            ang:Math.random()*Math.PI*2,
+            // Random distance
+            amp:5 + Math.random()*15,
+            // Random speed between 0,016 0,048 
+            speed:0.016 + Math.random()*0.032
+        });
+    };
+
+    mesh = new THREE.Mesh( geometry, material );
+	mesh.position.set(0, -300, 0);
+
+
+	scene.add( mesh );
+}
+
+
+function moveWaves(){	
+
+	for(var i = 0; i < geometry.vertices.length; i++) {
+		var v = geometry.vertices[i];
+		var x = (v.x / SEPARATION) * WAVE_SPEED;
+		var y = (v.y / SEPARATION) * WAVE_SPEED;
+		points[i] = WAVE_HEIGHT * (Math.cos(x*x + y*y) / Math.sqrt(x*x + y*y + 0.25));
+	}
     geometry.verticesNeedUpdate=true;
-
     //mesh.rotation.z += .005;
 }
 
@@ -150,7 +152,7 @@ function animate() {
 	// Repeat
     requestAnimationFrame( animate );
     // Animate waves
-    createSea();
+    moveWaves();
     
 }
 animate();
