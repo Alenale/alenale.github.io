@@ -68,13 +68,72 @@ function createMaterial( path ) {
 	return material; 
 }
 
-function addSceneElements() {
+Sea = function() {
 	var geometry = new THREE.BoxGeometry( 800, 200, 800 );
-	var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
-	var wave = new THREE.Mesh( geometry, material );
+	//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
+	var material = new THREE.MeshPhongMaterial({
+        color: 0x03436A,
+        transparent: true,
+        opacity: 0.6,
+        shading: THREE.FlatShading,
+    });
+
+	// Create Array of vertices
+	geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+	geometry.mergeVertices();
+
+	var l = geometry.vertices.length;
+	this.waves = [];
+
+	for (var i=0; i<l; i++){
+        var v = geom.vertices[i];
+
+        this.waves.push({
+            y:v.y,
+            x:v.x,
+            z:v.z,
+            // Random angle
+            ang:Math.random()*Math.PI*2,
+            // Random distance
+            amp:5 + Math.random()*15,
+            // Random speed between 0,016 0,048 
+            speed:0.016 + Math.random()*0.032
+        });
+    };
+
+    var wave = new THREE.Mesh( geometry, material );
 	wave.position.set(0, -300, 0);
+
+
 	scene.add( wave );
 }
+
+Sea.prototype.moveWaves = function (){
+    
+    // Get vertices
+    var verts = this.mesh.geometry.vertices;
+    var l = verts.length;
+    
+    for (var i=0; i<l; i++){
+        var v = verts[i];
+        
+        // get data
+        var vprops = this.waves[i];
+        
+        // update vertices position
+        v.x = vprops.x + Math.cos(vprops.ang)*vprops.amp;
+        v.y = vprops.y + Math.sin(vprops.ang)*vprops.amp;
+
+        // increase angle
+        vprops.ang += vprops.speed;
+
+    }
+
+    this.mesh.geometry.verticesNeedUpdate=true;
+
+    sea.mesh.rotation.z += .005;
+}
+
 
 
 function animate() {
@@ -89,6 +148,8 @@ function animate() {
 	
 	// Repeat
     requestAnimationFrame( animate );
+    // Animate waves
+    Sea.moveWaves();
     
 }
 animate();
