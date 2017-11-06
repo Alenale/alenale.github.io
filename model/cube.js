@@ -21,6 +21,9 @@ function init() {
 	// Create the sky box
 	loadSkyBox();
     
+    // Create Sea
+    createSea();
+
 	// Create the WebGL Renderer
 	renderer = new THREE.WebGLRenderer( { antialias:true} );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -99,12 +102,24 @@ Sea = function() {
         });
     };
 
-    var wave = new THREE.Mesh( geometry, material );
-	wave.position.set(0, -300, 0);
+    //var wave = new THREE.Mesh( geometry, material );
+    this.mesh = new THREE.Mesh( geometry, material );
 
 
-	scene.add( wave );
+	//scene.add( wave );
 }
+var sea;
+
+function createSea(){
+  sea = new Sea();
+
+  // Подвинем объект в нижнюю часть нашей сцены
+  sea.mesh.position.y = -300;
+
+  // Добавляем финальный меш на сцену
+  scene.add(sea.mesh);
+}
+
 
 Sea.prototype.moveWaves = function (){
     
@@ -147,7 +162,7 @@ function animate() {
 	// Repeat
     requestAnimationFrame( animate );
     // Animate waves
-    Sea.moveWaves();
+    sea.moveWaves();
     
 }
 animate();
