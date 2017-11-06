@@ -20,8 +20,6 @@ function init() {
     
 	// Create the sky box
 	loadSkyBox();
-	// Create the wave box
-	addSceneElements();
     
 	// Create the WebGL Renderer
 	renderer = new THREE.WebGLRenderer( { antialias:true} );
