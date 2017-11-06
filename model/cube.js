@@ -42,35 +42,9 @@ function init() {
 }
 init();
 
-function loadSkyBox() {
-	
-		// Load the skybox images and create list of materials
-		var materials = [
-			createMaterial( 'https://alenale.github.io/pic/skyX55+x.png' ), // right
-			createMaterial( 'https://alenale.github.io/pic/skyX55-x.png' ), // left
-			createMaterial( 'https://alenale.github.io/pic/skyX55+y.png' ), // top
-			createMaterial( 'https://alenale.github.io/pic/seabed_ny.png' ), // bottom
-			createMaterial( 'https://alenale.github.io/pic/skyX55+z.png' ), // back
-			createMaterial( 'https://alenale.github.io/pic/skyX55-z.png' )  // front
-		];
-		
-		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 800, 800, 800, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
-		
-		// Set the x scale to be -1, this will turn the cube inside out
-		mesh.scale.set(-1,1,1);
-		scene.add( mesh );	
-}
 
-function createMaterial( path ) {
-	var texture = THREE.ImageUtils.loadTexture(path);
-	var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
 
-	return material; 
-}
-
-Sea = function() {
-	var geometry = new THREE.BoxGeometry( 800, 200, 800 );
+var geometry = new THREE.BoxGeometry( 800, 200, 800 );
 	//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
 	var material = new THREE.MeshPhongMaterial({
         color: 0x03436A,
@@ -102,36 +76,52 @@ Sea = function() {
         });
     };
 
-    //var wave = new THREE.Mesh( geometry, material );
-    this.mesh = new THREE.Mesh( geometry, material );
+    var wave = new THREE.Mesh( geometry, material );
+	wave.position.set(0, -300, 0);
 
 
-	//scene.add( wave );
+	scene.add( wave );
+
+
+
+function loadSkyBox() {
+	
+		// Load the skybox images and create list of materials
+		var materials = [
+			createMaterial( 'https://alenale.github.io/pic/skyX55+x.png' ), // right
+			createMaterial( 'https://alenale.github.io/pic/skyX55-x.png' ), // left
+			createMaterial( 'https://alenale.github.io/pic/skyX55+y.png' ), // top
+			createMaterial( 'https://alenale.github.io/pic/seabed_ny.png' ), // bottom
+			createMaterial( 'https://alenale.github.io/pic/skyX55+z.png' ), // back
+			createMaterial( 'https://alenale.github.io/pic/skyX55-z.png' )  // front
+		];
+		
+		// Create a large cube
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 800, 800, 800, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		
+		// Set the x scale to be -1, this will turn the cube inside out
+		mesh.scale.set(-1,1,1);
+		scene.add( mesh );	
 }
-var sea;
 
-function createSea(){
-  sea = new Sea();
+function createMaterial( path ) {
+	var texture = THREE.ImageUtils.loadTexture(path);
+	var material = new THREE.MeshBasicMaterial( { map: texture, overdraw: 0.5 } );
 
-  // Подвинем объект в нижнюю часть нашей сцены
-  sea.mesh.position.y = -300;
-
-  // Добавляем финальный меш на сцену
-  scene.add(sea.mesh);
+	return material; 
 }
 
-
-Sea.prototype.moveWaves = function (){
-    
-    // Get vertices
-    var verts = this.mesh.geometry.vertices;
+function createSea() {
+	
+	// Get vertices
+    var verts = wave.geometry.vertices;
     var l = verts.length;
     
     for (var i=0; i<l; i++){
         var v = verts[i];
         
         // get data
-        var vprops = this.waves[i];
+        var vprops = waves[i];
         
         // update vertices position
         v.x = vprops.x + Math.cos(vprops.ang)*vprops.amp;
@@ -142,11 +132,10 @@ Sea.prototype.moveWaves = function (){
 
     }
 
-    this.mesh.geometry.verticesNeedUpdate=true;
+    wave.geometry.verticesNeedUpdate=true;
 
-    sea.mesh.rotation.z += .005;
+    wave.rotation.z += .005;
 }
-
 
 
 function animate() {
@@ -162,7 +151,7 @@ function animate() {
 	// Repeat
     requestAnimationFrame( animate );
     // Animate waves
-    sea.moveWaves();
+    createSea();
     
 }
 animate();
