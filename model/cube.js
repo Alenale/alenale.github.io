@@ -114,7 +114,7 @@ function createMaterial( path ) {
 function createSea() {
 	
 	// Get vertices
-    var verts = mesh.geometry.vertices;
+    var verts = geometry.vertices;
     var l = verts.length;
     
     for (var i=0; i<l; i++){
@@ -132,9 +132,9 @@ function createSea() {
 
     }
 
-    wave.geometry.verticesNeedUpdate=true;
+    geometry.verticesNeedUpdate=true;
 
-    wave.rotation.z += .005;
+    //mesh.rotation.z += .005;
 }
 
 
