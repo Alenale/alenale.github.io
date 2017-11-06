@@ -135,7 +135,6 @@ function animate(ts) {
   	}
   	mesh.geometry.verticesNeedUpdate = true;
   	renderer.render(scene, camera);
-	}
     
 }
 animate();
