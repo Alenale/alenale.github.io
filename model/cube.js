@@ -111,6 +111,7 @@ var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 300, 300);
 var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, transparent: true, opacity: 0.6, shading: THREE.FlatShading });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
+geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
 planeGeometry.mergeVertices();
 mesh.rotation.x = -1.6;
 
