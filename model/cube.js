@@ -112,22 +112,12 @@ mesh.position.set(0, -300, 0);
 
 scene.add( mesh );
 */
-water = new THREE.Water( 220, 220, {
-				color: params.color,
-				scale: params.scale,
-				flowDirection: new THREE.Vector2( params.flowX, params.flowY ),
-				textureWidth: 1024,
-				textureHeight: 1024
-			} );
-water.position.y = 100;
-water.rotation.x = Math.PI * - 0.5;
-scene.add( water );
 
 var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 300, 300);
-var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, transparent: true, opacity: 0.3, shading: THREE.FlatShading });
+var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, transparent: true, opacity: 0.7 });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
-geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
+//geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
 //planeGeometry.mergeVertices();
 mesh.rotation.x = -1.6;
 
