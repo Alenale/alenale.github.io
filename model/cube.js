@@ -2,7 +2,12 @@ var camera;
 var scene;
 var renderer;
 var controls;
-
+var params = {
+			color: '#ffffff',
+			scale: 4,
+			flowX: 1,
+			flowY: 1
+		};
 
 
 function init() {
@@ -119,7 +124,7 @@ water.rotation.x = Math.PI * - 0.5;
 scene.add( water );
 
 var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 300, 300);
-var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, map: texture, transparent: true, opacity: 0.3, shading: THREE.FlatShading });
+var planeMaterial = new THREE.MeshPhongMaterial({color: 0x1A528F, transparent: true, opacity: 0.3, shading: THREE.FlatShading });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
