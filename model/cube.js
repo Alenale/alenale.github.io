@@ -115,7 +115,7 @@ scene.add( mesh );
 var bmap =  THREE.ImageUtils.loadTexture("https://alenale.github.io/pic/seabed.png", {}, function(){});
 
 var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 300, 300);
-var planeMaterial = new THREE.MeshPhongMaterial({  /*color: 0x1A528F, shading: FlatShading,*/ transparent: true, opacity: 0.3 , bumpMap: bmap });
+var planeMaterial = new THREE.MeshPhongMaterial({  /*color: 0x1A528F, shading: FlatShading,*/ transparent: true, map: bmap });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 //geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
