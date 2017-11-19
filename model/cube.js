@@ -21,7 +21,7 @@ function init() {
 
     // Add a light
 	var light = new THREE.DirectionalLight(0xaaaae5, 2);
-	light.position.set(15, 16, -50);
+	light.position.set(6, 16, -50);
     scene.add(light);
 	//scene.add(new THREE.PointLightHelper(light, 3));
     
@@ -62,7 +62,7 @@ function loadSkyBox() {
 		];
 		
 		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 1100, 1100, 1100, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 300, 300, 500, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
 		
 		// Set the x scale to be -1, this will turn the cube inside out
 		mesh.scale.set(-1,1,1);
@@ -114,7 +114,7 @@ scene.add( mesh );
 */
 var bmap =  THREE.ImageUtils.loadTexture("https://alenale.github.io/pic/seabed.png", {}, function(){});
 
-var planeGeometry = new THREE.PlaneGeometry(1100, 1100, 300, 300);
+var planeGeometry = new THREE.PlaneGeometry(300, 300, 300, 300);
 var planeMaterial = new THREE.MeshPhongMaterial({  /*color: 0x1A528F, shading: FlatShading,*/ transparent: true, map: bmap });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
@@ -148,8 +148,8 @@ function animate(ts) {
     for (var i = 0; i < vLength; i++) {
     	var v = mesh.geometry.vertices[i];
     	var dist = new THREE.Vector2(v.x, v.y).sub(center);
-    	var size = 4.0;
-    	var magnitude = 8;
+    	var size = 7.0;
+    	var magnitude = 3;
     	v.z = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
   	}
   	mesh.geometry.verticesNeedUpdate = true;
