@@ -21,7 +21,7 @@ function init() {
 
     // Add a light
 	var light = new THREE.DirectionalLight(0xaaaae5, 2);
-	light.position.set(6, 16, -50);
+	light.position.set(9, 13, -40);
     scene.add(light);
 	//scene.add(new THREE.PointLightHelper(light, 3));
     
@@ -62,7 +62,7 @@ function loadSkyBox() {
 		];
 		
 		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 300, 300, 500, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 300, 500, 300, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
 		
 		// Set the x scale to be -1, this will turn the cube inside out
 		mesh.scale.set(-1,1,1);
