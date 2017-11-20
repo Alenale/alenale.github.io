@@ -62,7 +62,7 @@ function loadSkyBox() {
 		];
 		
 		// Create a large cube
-		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 300, 500, 300, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
+		var mesh = new THREE.Mesh( new THREE.BoxGeometry( 300, 300, 300, 1, 1, 1 ), new THREE.MeshFaceMaterial( materials ) );
 		
 		// Set the x scale to be -1, this will turn the cube inside out
 		mesh.scale.set(-1,1,1);
@@ -115,7 +115,7 @@ scene.add( mesh );
 var bmap =  THREE.ImageUtils.loadTexture("https://alenale.github.io/pic/seabed.png", {}, function(){});
 
 var planeGeometry = new THREE.PlaneGeometry(300, 300, 300, 300);
-var planeMaterial = new THREE.MeshPhongMaterial({  /*color: 0x1A528F,*/ shading: THREE.SmoothShading, transparent: true, map: bmap });
+var planeMaterial = new THREE.MeshPhongMaterial({  /*color: 0x1A528F,*/ shading: THREE.FlatShading, transparent: true, map: bmap });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 //geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
