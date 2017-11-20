@@ -76,46 +76,10 @@ function createMaterial( path ) {
 	return material; 
 }
 
-/*
-function moveWaves(){	
-
-	for(var i = 0; i < geometry.vertices.length; i++) {
-		var v = geometry.vertices[i];
-		var x = (v.x / SEPARATION) * WAVE_SPEED;
-		var y = (v.y / SEPARATION) * WAVE_SPEED;
-		points[i] = WAVE_HEIGHT * (Math.cos(x*x + y*y) / Math.sqrt(x*x + y*y + 0.25));
-	}
-    geometry.verticesNeedUpdate=true;
-    //mesh.rotation.z += .005;
-}
-*/
-
-/*
-var geometry = new THREE.BoxGeometry( 1100, 200, 1100 );
-//var material = new THREE.MeshBasicMaterial( { color: 0x384E74, transparent: true, opacity: 0.6 } );
-var material = new THREE.MeshPhongMaterial({
-	color: 0x03436A,
-    transparent: true,
-    opacity: 0.6,
-    shading: THREE.FlatShading,
-});
-
-// Create Array of vertices
-//geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
-//geometry.mergeVertices();
-var l = geometry.vertices.length;
-
-mesh = new THREE.Mesh( geometry, material );
-
-mesh.rotation.x = -0.4 * Math.PI;
-mesh.position.set(0, -300, 0);
-
-scene.add( mesh );
-*/
 var bmap =  THREE.ImageUtils.loadTexture("https://alenale.github.io/pic/seabed.png", {}, function(){});
 
 var planeGeometry = new THREE.PlaneGeometry(300, 300, 300, 300);
-var planeMaterial = new THREE.MeshPhongMaterial({  color: 0x1A528F, shading: THREE.FlatShading, transparent: true, map: bmap, normalMap: normalMap });
+var planeMaterial = new THREE.MeshPhongMaterial({  color: 0x1A528F, shading: THREE.FlatShading, transparent: true, map: bmap });
 var mesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 //geometry.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
