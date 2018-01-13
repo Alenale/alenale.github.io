@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $(function(){
-      var accessToken = '2203262219.2bbe5a3.99c919964f824e39a56997f01c67b8ef';
-      var userId = 2203262219; 
+      var accessToken = '6918512031.3d781d7.5051533f22dc4dab9574da053742c979';
+      var userId = 6918512031; 
       var countPhotos = 20;
     // загрузить данные на странице 
     $.ajax({
