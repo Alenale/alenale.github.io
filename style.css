@@ -10,7 +10,7 @@ li{
 	margin: 0px;
 }
 img{
-	margin-left: 5%;
+	margin-top: 2%;
 	height: 360px;
 	width: 100%;
 	max-width: 360px;
@@ -21,6 +21,7 @@ img{
 #feed{
 	background: rgb(164, 147, 144, 0.7);  	
 	margin: 3% 20%;
+	min-width: 430px;
 	font-family: sans-serif;	
 	box-shadow:
             0 0 1px rgba(0, 0, 0, 0.5),
@@ -31,20 +32,17 @@ img{
 /*информация*/
 #feed .go{ 	 
 	position: relative;
+	margin-top: 2%;
 	padding-left: 55px;
   	padding-right: 25px; 
   	vertical-align: top;
   	display: inline-block;
   	width: 100%;
   	max-width: 210px;
-  	min-width: 210px;
+  	min-width: 280px;
   	height: 358px;
+  	min-height: 300px;
   	background-color: #FBFBFB;
-  	/*border-top-style: solid;
-  	border-right-style: solid;
-  	border-bottom-style: solid;
-  	border-color: #2A1271;
-	border-width: 1px;*/
 	overflow: hidden;
 }
 
