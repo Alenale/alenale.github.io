@@ -2,7 +2,7 @@
 Посмотреть результат можно по <strong>ссылке:</strong>https://alenale.github.io/index.html
 <p>Веб страница получает данные от API инстаграма и отображает ее следующем образом:</p>
 
-![alt text](https://github.com/Alenale/alenale.github.io/blob/master/img/image.jpg)
+![alt text]()
   
   <strong>Содержание</strong>
 <ul>	
