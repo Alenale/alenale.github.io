@@ -1,0 +1,486 @@
+@text-header: #ffffff;
+@bttn-bg: @text-header;
+@bttn-text: #222222;
+@text-spec: #a4a4a4;
+@left-margin: 390px;
+@shots-bg: #f7fafc;
+@gradient: linear-gradient(to right, #fd712c,#f01c78);
+@moz-gradient: linear-gradient( #fd712c, #f01c78);
+@gray-text: #777777;
+
+//Reset
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: @text-header;
+	width: 1920px;
+}
+ul{
+	list-style: none;
+}
+// Header 
+#header{
+	background: @gradient;
+	height: 800px;
+	width: 1920px;
+}
+.logo{
+	margin-top: 30px;
+	margin-left: 390px;	
+}
+ul > li.name {	
+	font-family: 'Dosis Bold';
+	font-size: 1.875em; 
+	padding-right: 565px; 
+	padding-top: 33px;
+}
+// Menu 
+figcaption > ul.menu{
+	float: right;
+	padding-right: 390px;	
+	color: @text-header;
+}
+.menu > li{
+	display: inline-block;
+	font-family: 'Dosis SemiBold';
+	font-size: 1em;
+	padding-right: 52px;
+}
+// Button: Download now 
+ul > button{
+	background: @bttn-bg;
+	height: 35px;
+	width: 153px;
+	color: @bttn-text;
+	font-size: 14px;
+	font-family: 'Roboto Medium';
+	border-radius: 100px;
+	outline: none;
+	border: none;
+}
+// Description 
+.text-header{
+	color: @text-header;	
+	margin-top: 153px;
+	margin-left: 390px;
+	position: absolute;
+	height: 365px;
+	width: 1530px; 
+}
+.text-header > section{
+	width: 490px;
+}
+ .text-header h1{
+	font-family: 'Dosis SemiBold';
+	font-size: 2.5em;
+	padding-bottom: 24px; 
+ }
+ .text-header p{
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	padding-bottom: 25px;
+ }
+ .fa-check-circle{ 
+	padding-top: 4px;
+	position: absolute;
+	font-size: 0.8em;
+	margin-bottom: 25px; 
+
+ }
+#header .point{		
+	position: relative;
+	font-family: 'Roboto Regular';
+	font-size: 1em;
+	padding-left: 21px;
+}
+// Button: Start Exploring Us 
+#bttn-start-us{
+	margin-top: 40px;
+	width: 195px;
+	height: 40px;
+	background: @bttn-bg;
+	color: @bttn-text;
+	font-family: 'Roboto Medium';
+	font-size: 0.9em;
+	border-radius: 100px; 
+	outline: none;
+	border: 5px solid #e2602d;
+	padding: 9px 30px; 
+}
+img.iPhones{
+	margin-top: 80px;
+	float: right;
+	position: relative;
+	-webkit-filter: drop-shadow(20px 20px 20px #c3123b);
+	-moz-box-shadow: drop-shadow(20px 20px 20px #c3123b);
+	filter: drop-shadow(20px 20px 20px #c3123b);
+}
+ul.features-spec {
+	margin-top: 120px;
+	margin-left: 390px;	
+}
+.features-spec li{
+	display: inline-block;	
+	padding-bottom: 60px;
+} 
+.features-spec i{
+	position: absolute;
+	padding-top: 6px;
+	color: #f31f79;
+	font-size: 1.125em;
+	border: 1px solid @text-spec;
+	padding: 25px;
+	border-radius: 50px;
+
+}
+.features-spec section{
+	position: relative;
+	margin-left: 90px;
+	width: 305px;
+}
+.features-spec h2{
+	font-family: 'Dosis Medium';
+	color: @bttn-text;
+	padding-bottom: 25px;
+}
+.features-spec span{
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	color: @text-spec;
+
+}
+hr{
+	display: block;
+	margin-top: 65px;
+	margin-bottom: 121px;
+	margin-left: 390px;
+	border-style: inset #eeeeee;
+	border-width: 2px;
+	width: 1180px;
+	border-top: none;
+}
+// Block: We don't leave you stranded
+#leave{
+	height: 500px;
+}
+#leave img{
+	position: absolute;
+	margin-left: 0;
+	margin-top: -150px; 
+}
+#leave section{
+	margin-left: 976px;
+}
+section h1{
+	font-family: 'Dosis Medium';
+	font-size: 3em;
+	color: @bttn-text;
+	padding-bottom: 30px;
+}
+#leave p{ 	
+	color: @text-spec;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+}
+#leave p.spec2{
+	padding-top: 80px;
+	padding-bottom: 40px;
+}
+#leave span.point{
+	color: @text-spec;
+	font-family: 'Roboto Regular';
+	font-size: 1em;
+	padding-left: 21px;
+	position: relative;
+	padding-bottom: 25px;
+}
+// Screen shots
+#screen-shots{
+	margin-top: 80px;
+	height: 802px;
+	background: @shots-bg;
+	padding: 116px 270px 60px 270px;
+}
+#screen-shots p{
+	color: @gray-text;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	padding-bottom: 77px;
+}
+#screen-shots li{
+	display: inline-block;
+	vertical-align: middle;
+}
+// Button: arrows
+.button{
+	border: 1px solid @text-spec;
+	padding: 20px;
+	border-radius: 50px;	
+}
+button.arrow-left{
+	background-color: @bttn-bg;
+}
+li > button.arrow-right{
+	border: 4px solid #e5e8ea;
+	background: @gradient;
+	-moz-background: @moz-gradient;
+	color: @text-header;
+}
+// 
+#Pricing{
+	height: 680px;
+	padding: 116px 330px 120px 390px;
+}
+#Pricing p{
+	color: @gray-text;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+}
+#Pricing li{
+	display: inline-block;
+}
+#Pricing .block{
+	background: @shots-bg;
+	height: 482px;
+	width: 263px;
+	margin-top: 78px;
+	margin-right: 30px;
+
+}
+#base{
+	background: @bttn-bg;
+  	display: inline-block;
+  	height: 80px;
+  	font-family: 'Dosis Medium';
+  	margin-top: 17px;
+	position: relative;
+	width: 263px;
+	padding-top: 30px;
+}
+#base:after{
+	content: "";
+	position: absolute;
+	bottom: -42px; 
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 130px solid transparent;
+	border-right: 130px solid transparent;
+	border-top: 42px solid @bttn-bg; 
+}
+#b2{
+	display: inline-block;
+  	height: 80px;
+  	font-family: 'Dosis Medium';
+  	margin-top: 17px;
+	position: relative;
+	width: 263px;
+	background: @gradient;
+	-moz-background: linear-gradient( #fd712c, #f01c78);
+	padding-top: 30px;
+	color: @text-header;
+}
+#b2:after{
+	content: "";
+	position: absolute;
+	border-top: 42px solid; 
+	border-color: @gradient;
+	-moz-border-color: linear-gradient( #fd712c, #f01c78);
+	bottom: -42px; 
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 130px outset transparent;
+	border-right: 130px outset transparent;	
+	
+}
+h4{
+	padding-top: 17px;
+	font-size: 1.125em;
+	font-family: 'Dosis Semibold';
+}
+li.block hr.line{	
+	padding: 0;
+    margin: 0; 
+	width: 100px;
+	border-top: none;
+    border-bottom: 1px dashed #eeeeee;
+    background: @shots-bg;
+    outline: none;
+	margin-top: 4px;
+	margin-bottom: 4px;
+} 
+#f{
+	color: @gray-text;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	padding-top: 60px;
+	padding-bottom: 10px;
+}
+center > button{
+	background: @bttn-bg;	
+	color: @bttn-text;
+	height: 40px;
+	width: 135px;
+	font-size: 1em;
+	font-family: 'Roboto Medium';
+	border-radius: 100px;
+	border: 1px solid @text-spec;
+}
+center > button.buy{
+	border: 4px solid #e5e8ea;
+	background: @gradient;
+	-moz-background: @moz-gradient;
+	color: @text-header;
+}
+ul > li.pricing02{
+	-webkit-box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);
+	-moz-box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);
+	box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);
+}
+#beach{
+	background-image: url(../img/beach.png);
+	height: 400px;
+}
+#beach button.play{
+	border: 1px solid @text-spec;
+	width: 75px;
+	height: 75px;
+	border-radius: 50px;	
+	padding: 0;
+	outline: none;
+	border: none; 
+	background: @gradient;
+	-moz-background: @moz-gradient;
+	margin-top:  163px;
+}
+#beach .fa-play{	
+	padding: 20px;
+	color: @bttn-bg;	
+}
+#customers{
+	height: 576px;
+	padding: 110px 240px 120px 240px;
+}
+#customers p{
+	color: @gray-text;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+}
+#customers li{
+	display: inline-block;
+	vertical-align: middle;	
+}
+#customers li.feedback{	
+	background: @shots-bg;
+	width: 300px;
+	height: 275px;
+	margin-top: 80px;
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 45px;
+}
+	
+#customers li.feedback2{
+	background: @bttn-bg;
+	width: 300px;
+	height: 275px;
+	margin-top: 80px;
+	margin-right: 15px;
+	padding: 45px;
+	-webkit-box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);
+	-moz-box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);
+	box-shadow: -3px 8px 74px -5px rgba(0,0,0,0.14);	
+}
+#customers .photo-feedback1{
+	background: url(../img/Feedback1.png) no-repeat -26px 0;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-size: auto 84px; 
+	position: absolute;
+	margin-top: 30px;
+}
+#customers .photo-feedback2{
+	background: url(../img/Feedback2.png) no-repeat -40px -13px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-size: auto 115px; 
+	position: absolute;
+	margin-top: 30px;
+}
+#customers .photo-feedback3{
+	background: url(../img/Feedback3.png) no-repeat -105px -42px;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background-size: auto 205px; 
+	position: absolute;
+	margin-top: 30px;
+}
+#customers .feedback-inf{
+	padding-left: 105px;
+	padding-top: 40px
+}
+#customers .feedback-inf p{
+	padding-top: 0;
+}
+#download{
+	background: @gradient;
+	-moz-background: @moz-gradient;
+	height: 265px; 
+	padding: 116px 340px 125px 340px;
+}
+#download h1{
+	font-family: 'Dosis Light';
+	font-size: 3em;
+	color: @text-header;
+}
+#download button{
+	margin-top: 90px;
+	width: 360px;
+	height: 116px;
+	outline: none;
+	border: none;
+	border-radius: 2px;
+	background: @bttn-bg;
+	display: inline-block;
+	margin-left: 27px;
+}
+#download img{
+	position: absolute;
+	margin-top: -29px;
+	margin-left: -180px;
+}
+#download button > h2{
+	color: @bttn-text;
+	font-family: 'Dosis Semibold';
+}
+#download button > p{
+	padding-left: 68px;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	color: @gray-text;
+	padding-top: 15px;
+}
+#footer{
+	background: @bttn-text;
+	color: @text-header;
+	font-family: 'Roboto Light';
+	font-size: 1em;
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+#footer .fa{
+	padding-bottom: 30px;
+	padding-right: 32px
+}
+#footer .fa-dribbble{
+	color: #f31f79;
+}
+
+
+
