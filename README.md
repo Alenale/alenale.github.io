@@ -1,7 +1,7 @@
 # alenale.github.io
 Посмотреть результат можно по <strong>ссылке:</strong> 
-https://alenale.github.io/index.html
-В папке project-Giant располагается верстка главной страницы сайта:
+<p> https://alenale.github.io/index.html </p>
+<p> В папке project-Giant располагается верстка главной страницы сайта </p>
 
 <p>Веб страница получает данные от API инстаграма и отображает ее следующем образом:</p>
 
