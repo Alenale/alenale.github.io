@@ -1,6 +1,6 @@
 # alenale.github.io
 Виджет для отображения фотографий из инстарамма. Посмотреть результат можно по <strong>ссылке:</strong> 
-<p> alenale.github.io/widget/index.html </p>
+<p> https://alenale.github.io/widget/index.html </p>
 <p> В папке model представлено моделирование волны на js с использованием библиотеки THREE.js. Результат можно посмотреть по ссылке:</p>
 <p> https://alenale.github.io/model/index.html</p>
 <p> В папке project-Giant располагается верстка главной страницы сайта </p>
