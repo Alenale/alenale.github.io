@@ -1,4 +1,4 @@
 <h2>Моделирование волны</h2>
 <p>В данной модели волнового процесса представлены основные элементы: сцена (куб), камера, свет и функия цилиндрической волны.</p>
 
-<p>![alt text](https://github.com/Alenale/alenale.github.io/blob/master/model/img/2018-02-11_16-55-17.png)</p>
+![alt text](https://github.com/Alenale/alenale.github.io/blob/master/model/img/2018-02-11_16-55-17.png)
