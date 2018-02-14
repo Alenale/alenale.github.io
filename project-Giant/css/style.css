@@ -224,6 +224,7 @@ section h1.title{
 	text-align: left;
 }
 section h1{
+	padding-bottom: 30px;
 	font-family: 'Dosis-Medium';
 	text-align: center;
 	font-size: 3em;
