@@ -1,5 +1,5 @@
 # alenale.github.io
-Посмотреть результат можно по <strong>ссылке:</strong>https://alenale.github.io/index.html
+Посмотреть результат можно по <strong>ссылке:</strong>https://alenale.github.io/widget/index.html
 <p>Веб страница получает данные от API инстаграма и отображает ее следующем образом:</p>
 
 ![alt text](https://github.com/Alenale/alenale.github.io/blob/master/widget/img/image_1.jpg)
